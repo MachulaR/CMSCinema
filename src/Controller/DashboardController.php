@@ -20,7 +20,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/dashboard/cinema-halls")
+     * @Route("/dashboard/cinema-halls", name="cinema-halls")
      */
     public function cinema_halls(){
 
@@ -28,7 +28,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/dashboard/movie-data")
+     * @Route("/dashboard/movie-data", name="movie-data")
      */
     public function movie_data(){
 

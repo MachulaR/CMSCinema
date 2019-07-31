@@ -1,3 +1,7 @@
+body{
+    background: #454852;
+}
+
 input{
     background: none;
     border: 1px solid #000000;
@@ -5,15 +9,14 @@ input{
     padding: 6px 15px;
     box-sizing: border-box;
     margin-bottom: 20px;
-    /*margin-left: 15px;*/
+    margin-left: 15px;
     font-size: 16px;
     color: #000000;
-    min-width: 250px;
 }
 
 input[type='submit']:hover{
     transition: 0.6s;
-    color: #ccc;
+    cursor: pointer;
 }
 
 #login-button{
@@ -30,3 +33,123 @@ input[type='submit']:hover{
     border-radius: 5px;
     text-align: center;
 }
+
+.topbar {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    background: #2A323C;
+}
+
+.topbar .topbar-left{
+    background-color: #454852;
+    float: left;
+    position: relative;
+    width: 240px;
+    z-index: 1;
+}
+
+.navbar, .topbar, .topbar-left{
+    height: 70px;
+}
+
+.side-menu {
+    bottom: 0;
+    top: 0;
+    width: 240px;
+    z-index: 2;
+}
+.side-menu.left {
+    background: #2A323C;
+    /*box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);*/
+    position: absolute;
+    top: 70px;
+    z-index: 99;
+}
+.content-page {
+    margin-left: 240px;
+    overflow: hidden;
+}
+.content-page > .content {
+    margin-bottom: 60px;
+    margin-top: 70px;
+    padding: 20px 5px 15px 5px;
+}
+.sidebar-inner {
+    height: 100%;
+}
+#sidebar-menu,
+#sidebar-menu ul,
+#sidebar-menu li,
+#sidebar-menu a {
+    border: 0;
+    font-weight: normal;
+    line-height: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+}
+#sidebar-menu > ul > li > a {
+    color: #FFFFFF;
+    display: block;
+    padding: 15px 25px;
+    background-color: #2A323C;
+    font-size: 15px;
+    height: 50px !important;
+}
+#sidebar-menu > ul > li > a:hover {
+    background-color: #cccccc;
+    text-decoration: none;
+}
+
+#sidebar-menu > ul > li > a > i {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 17px;
+    margin-left: 3px;
+    margin-right: 10px;
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+    color: #4a5869;
+}
+
+.page-header-title {
+    background-color: #2a323c;
+    margin: -20px -5px 23px -5px;
+    padding: 10px 15px 100px 20px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.page-header-title .breadcrumb {
+    margin-bottom: 0;
+}
+.page-header-title .page-title {
+    margin-bottom: 12px;
+    color: #ffffff;
+    font-size: 22px;
+}
+.page-content-wrapper {
+    margin-top: -100px;
+}
+
+/* ==============
+Panels
+===================*/
+.panel {
+
+    border: none;
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+.panel .panel-body {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
