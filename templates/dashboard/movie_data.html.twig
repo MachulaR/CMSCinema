@@ -1,3 +1,63 @@
 {% extends 'dashboard-base.html.twig' %}
 
 {% block title %}Dashboard - movie data{% endblock %}
+{% block panel %}
+    <div class="row">
+        <div class="col-md-12 mgb-15">
+            <button type="button" class="pull-right btn btn-primary" data-toggle="modal" data-target="#add-new-movie-Modal">Add a movie</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <th>Title Original</th>
+                <th>Title PL</th>
+                <th>Actions</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a href="#edit-movie-data-Modal" data-toggle="modal"> <i class="fa fa-pencil"></i></a>
+                        <a href="#"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    {% block modal_add %}
+        <div id="add-new-movie-Modal" class="modal" role="dialog">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add movie</h4>
+                        <button type="button" class="close"
+                                data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <button type="button" class="pull-right btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block modal_edit %}
+        <div id="edit-movie-data-Modal" class="modal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit movie data</h4>
+                        <button type="button" class="close" data-dismiss="modal">x</button>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
