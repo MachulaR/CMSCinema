@@ -4,14 +4,14 @@ body{
 
 input{
     background: none;
-    border: 1px solid #000000;
+    border: 1px solid #e3e3e3;
     border-radius: 3px;
     padding: 6px 15px;
     box-sizing: border-box;
     margin-bottom: 20px;
     margin-left: 15px;
     font-size: 16px;
-    color: #000000;
+    color: #e3e3e3;
 }
 
 input[type='submit']:hover{
@@ -21,7 +21,7 @@ input[type='submit']:hover{
 
 #login-button{
     min-width: 150px;
-    border: 2px solid #000000;
+    border: 2px solid #e3e3e3;
     margin-left: 10px;
 }
 
@@ -29,9 +29,10 @@ input[type='submit']:hover{
 .login-box {
     margin: 25px auto;
     width: 350px;
-    border: 2px solid #000000;
+    border: 2px solid #e3e3e3;
     border-radius: 5px;
     text-align: center;
+    color: #e3e3e3;
 }
 
 .topbar {
@@ -45,6 +46,7 @@ input[type='submit']:hover{
 
 .topbar .topbar-left{
     background-color: #454852;
+    color: #e3e3e3;
     float: left;
     position: relative;
     width: 240px;
@@ -94,7 +96,7 @@ input[type='submit']:hover{
 
 }
 #sidebar-menu > ul > li > a {
-    color: #FFFFFF;
+    color: #e3e3e3;
     display: block;
     padding: 15px 25px;
     background-color: #2A323C;
@@ -102,8 +104,12 @@ input[type='submit']:hover{
     height: 50px !important;
 }
 #sidebar-menu > ul > li > a:hover {
-    background-color: #cccccc;
+    background-color: #454852;
+    color: #e3e3e3;
+    font-weight: bold;
+    font-size: 17px;
     text-decoration: none;
+    transition: 0.6s;
 }
 
 #sidebar-menu > ul > li > a > i {
@@ -129,7 +135,8 @@ input[type='submit']:hover{
 }
 .page-header-title .page-title {
     margin-bottom: 12px;
-    color: #ffffff;
+    color: #e3e3e3;
+    font-weight: bold;
     font-size: 22px;
 }
 .page-content-wrapper {
@@ -149,7 +156,7 @@ Panels
 }
 .panel .panel-body {
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #e3e3e3;
     border-radius: 10px;
 }
 

@@ -2,49 +2,15 @@
 
 {% block body %}
     <div class="topbar">
-
         <div class="topbar-left">
-
             <div class="text-center">
                 <strong>Welcome, <br /></strong>
                 {{ app.user.login }}
             </div>
-
         </div>
         <div class="navbar navbar-default">
-            <div class="">
-                {#<ul class="nav">#}
-                    {#<li>#}
-                        {#<a href="{{path('dashboard')  }}" class="waves-effect waves-light"> MAIN PAGE</a>#}
-                    {#</li>#}
-
-                    {#<li>#}
-                        {#<a href="" class="waves-effect waves-light"> FULLSCREEN</a>#}
-                    {#</li>#}
-
-                    {#<li>#}
-                        {#<a href="" class="waves-effect waves-light"> SOMETHING</a>#}
-                    {#</li>#}
-
-                    {#<li class="dropdown">#}
-                        {#<a href="" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">#}
-                            {#<span>OPTIONS </span>#}
-                        {#</a>#}
-
-                        {#<ul class="dropdown-menu">#}
-                            {#<li><a href="javascript:void(0)"> Nothing</a></li>#}
-                            {#<li><a href="javascript:void(0)"> Nothing (too)</a></li>#}
-                            {#<li class="divider"></li>#}
-                            {#<li><a href="{{  path('logout') }}">Logout</a></li>#}
-                        {#</ul>#}
-                    {#</li>#}
-                {#</ul>#}
-
-            </div>
         </div>
-
     </div>
-
     <div class="left side-menu">
         <div class="sidebar-inner">
             <div id="sidebar-menu">
@@ -62,57 +28,35 @@
                         <a href="{{ path('logout') }}" class="waves-effect"><i class="mdi mdi-home"></i><span> Logout </span></a>
                     </li>
                 </ul>
-
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
-
     <div class="content-page">
-
         <div class="content">
-
             <div class="page-header-title">
                 <h4 class="page-title">
                     {% block title %}
                         Dashboard
                     {% endblock %}
-
                 </h4>
             </div>
-
             <div class="page-content-wrapper ">
-
                 <div class="container">
-
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="panel panel-primary">
                                 <div class="panel-body">
-                                    {% for message in app.flashes('warning') %}
-
-                                        <div class="alert alert-info">
-                                            {{ message }}
-                                        </div>
-                                    {% endfor %}
                                     {% block panel %}
-
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem. Etiam pellentesque aliquet tellus. Phasellus pharetra nulla ac diam. Quisque semper justo at risus. Donec venenatis, turpis vel hendrerit interdum, dui ligula ultricies purus, sed posuere libero dui id orci. Nam congue, pede vitae dapibus aliquet, elit magna vulputate arcu, vel tempus metus leo non est. Etiam sit amet lectus quis est congue mollis. Phasellus congue lacus eget neque. Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue. Cras suscipit, urna at aliquam rhoncus, urna quam viverra nisi, in interdum massa nibh nec erat.
-
                                     {% endblock %}
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
-
-
     </div>
 {% endblock %}
 
