@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdminsRepository")
  */
@@ -16,63 +13,49 @@ class Admins implements UserInterface, \Serializable
      * @ORM\Column(type="integer", unique=true)
      */
     private $id;
-
     /**
      * @ORM\Column(type="string", length=18, unique=true)
      */
     private $login;
-
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $password;
-
     /**
      * @ORM\Column(type="string", length=8, unique=true)
      */
     private $employee_number;
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getLogin(): ?string
     {
         return $this->login;
     }
-
     public function setLogin(string $login): self
     {
         $this->login = $login;
-
         return $this;
     }
-
     public function getPassword(): ?string
     {
         return $this->password;
     }
-
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
         return $this;
     }
-
     public function getEmployeeNumber(): ?string
     {
         return $this->employee_number;
     }
-
     public function setEmployeeNumber(string $employee_number): self
     {
         $this->employee_number = $employee_number;
-
         return $this;
     }
-
     /**
      * Returns the roles granted to the user.
      *
@@ -91,7 +74,6 @@ class Admins implements UserInterface, \Serializable
     {
         return ['ROLE_ADMIN'];
     }
-
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -103,7 +85,6 @@ class Admins implements UserInterface, \Serializable
     {
         // TODO: Implement getSalt() method.
     }
-
     /**
      * Returns the username used to authenticate the user.
      *
@@ -113,7 +94,6 @@ class Admins implements UserInterface, \Serializable
     {
         // TODO: Implement getUsername() method.
     }
-
     /**
      * Removes sensitive data from the user.
      *
@@ -124,7 +104,6 @@ class Admins implements UserInterface, \Serializable
     {
         // TODO: Implement eraseCredentials() method.
     }
-
     /**
      * String representation of object
      * @link http://php.net/manual/en/serializable.serialize.php
@@ -140,7 +119,6 @@ class Admins implements UserInterface, \Serializable
             $this->employee_number,
         ]);
     }
-
     /**
      * Constructs the object
      * @link http://php.net/manual/en/serializable.unserialize.php

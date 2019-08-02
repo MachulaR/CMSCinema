@@ -4,47 +4,69 @@
 {% block panel %}
     <div class="row">
         <div class="col-md-12 mgb-15">
-            <button type="button" class="pull-right btn btn-primary" data-toggle="modal" data-target="#add-new-movie-Modal">Add a movie</button>
+            <button type="button" class="pull-right btn btn-primary" data-toggle="modal" data-target="#movie-data-Modal">Add a movie</button>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
+            <br />
+            {%  if data.movie_list is empty %}
+                <div class="alert alert-info">
+                    No records. Add record by clicking button in right upper corner
+                </div>
+            {% endif %}
+            {%  for message in app.flashes('notice') %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             <table class="table">
                 <thead>
                 <th>Title Original</th>
                 <th>Title PL</th>
+                <th>Displayed in cinema</th>
                 <th>Actions</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <a href="#edit-movie-data-Modal" data-toggle="modal"> <i class="fa fa-pencil"></i></a>
-                        <a href="#"><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
+                {%  for movie in data.movie_list %}
+                    <tr>
+                        <td>{{ movie.titleOriginal }}</td>
+                        <td>{{ movie.titlePL }}</td>
+                        <td>
+                            {% if movie.editTimestamp  %}
+                                {% if (movie.editTimestamp|date('Y/m/d') == 'today'|date('Y/m/d') or movie.addTimestamp|date('Y/m/d') == 'today'|date('Y/m/d')) %}
+                                    {{ 'yes'}}
+                                {% else %}
+                                    {{ 'no' }}
+                                {% endif %}
+                            {% elseif movie.addTimestamp|date('Y/m/d') == 'today'|date('Y/m/d') %}
+                                {{ 'yes' }}
+                            {% else %}
+                                {{  'no' }}
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <a href="#movie-data-Modal" data-toggle="modal"
+                               data-movie-id="{{ movie.id }}"
+                               data-movie-title-pl="{{ movie.titlePL }}"
+                               data-movie-title-original="{{ movie.titleOriginal }}"
+                               data-movie-trailer="{{ movie.trailer }}"
+                               data-movie-img="{{ movie.img }}"
+                               data-movie-info="{{ movie.info }}"
+                               data-movie-description="{{ movie.description }}"
+                               data-movie-screen-time="{{ movie.screenTime }}"
+                               data-movie-cinema-halls="{{ movie.cinemaHalls }}"
+                            > <i class="fa fa-pencil"></i></a>
+                            <a href="{{ path('dashboard/movie_delete', { 'id': movie.id }   ) }}"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-
-    {% block modal_add %}
-        <div id="add-new-movie-Modal" class="modal" role="dialog">
-
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Add movie</h4>
-                        <button type="button" class="close"
-                                data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <button type="button" class="pull-right btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
 
     {% block modal_edit %}
         <div id="edit-movie-data-Modal" class="modal" role="dialog">
@@ -54,10 +76,38 @@
                         <h4 class="modal-title">Edit movie data</h4>
                         <button type="button" class="close" data-dismiss="modal">x</button>
                     </div>
-
+                    {{ form(form) }}
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     {% endblock %}
+
+    {% block script %}
+        <script>
+            $('#movie-data-Modal').on('show.bs.modal', function(e) {
+                var id = $(e.relatedTarget).data('movie-id');
+                var titlePl = $(e.relatedTarget).data('movie-title-pl');
+                var titleOriginal = $(e.relatedTarget).data('movie-title-original');
+                var trailer = $(e.relatedTarget).data('movie-trailer');
+                var img = $(e.relatedTarget).data('movie-img');
+                var info = $(e.relatedTarget).data('movie-info');
+                var description = $(e.relatedTarget).data('movie-description');
+                var screenTime = $(e.relatedTarget).data('movie-screen-time');
+                var cinemaHalls = $(e.relatedTarget).data('movie-cinema-halls');
+
+                $(e.currentTarget).find('input[name="form[id]"]').val(id);
+                $(e.currentTarget).find('input[name="form[title_pl]"]').val(titlePl);
+                $(e.currentTarget).find('input[name="form[title_original]"]').val(titleOriginal);
+                $(e.currentTarget).find('input[name="form[trailer]"]').val(trailer);
+                $(e.currentTarget).find('input[name="form[img]"]').val(img);
+                $(e.currentTarget).find('input[name="form[info]"]').val(info);
+                $(e.currentTarget).find('input[name="form[description]"]').val(description);
+                $(e.currentTarget).find('input[name="form[screen_time]"]').val(screenTime);
+                $(e.currentTarget).find('input[name="form[cinema_halls]"]').val(cinemaHalls);
+            });
+
+        </script>
+    {% endblock %}
+
 {% endblock %}
