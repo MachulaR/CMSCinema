@@ -143,9 +143,6 @@ input[type='submit']:hover{
     margin-top: -100px;
 }
 
-/* ==============
-Panels
-===================*/
 .panel {
 
     border: none;
@@ -158,5 +155,9 @@ Panels
     padding: 20px;
     background-color: #e3e3e3;
     border-radius: 10px;
+}
+
+.pull-right {
+    text-align: right;
 }
 

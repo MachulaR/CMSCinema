@@ -50,10 +50,16 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/dashboard/movie-data", name="movie-data")
+     * @Route("/dashboard/movie-data/page={page}", name="movie-data", requirements={"page"="\d+"})
      */
-    public function movie_data(Request $request){
-
+    public function movie_data(Request $request, $page){
+        $limit = 10;
+        $number_of_pages = ceil(sizeof($this->getMovies())/$limit);
+        if ($page < 1) {
+            return $this->redirectToRoute('movie-data', ['page' => 1]);
+        } else if ($page > $number_of_pages) {
+            return $this->redirectToRoute('movie-data', ['page' => $number_of_pages]);
+        }
         $task = new Movies();
 
         $form = $this->createFormBuilder($task)
@@ -81,7 +87,9 @@ class DashboardController extends AbstractController
         }
 
         $viewData = [
-            'movie_list' => $this->getAllMovies(),
+            'page' => $page,
+            'size' => $number_of_pages,
+            'movie_list' => $this->getMoviesByPages($page-1, $limit),
         ];
 
         return $this->render('dashboard/movie_data.html.twig', ['data'=>$viewData, 'form' => $form->createView()]);
@@ -109,11 +117,21 @@ class DashboardController extends AbstractController
         return $this->redirectToRoute('movie-data');
     }
 
-    private function getAllMovies()
+    private function getMovies()
     {
         $movies = $this->getDoctrine()
             ->getRepository(Movies::class)
-            ->findAll();;
+            ->findAll();
+
+        return $movies;
+    }
+
+    private function getMoviesByPages(int $page, int $limit)
+    {
+        $movies = $this->getDoctrine()
+            ->getRepository(Movies::class)
+            ->findBy([], null, $limit, $page * $limit);
+
 
         return $movies;
     }

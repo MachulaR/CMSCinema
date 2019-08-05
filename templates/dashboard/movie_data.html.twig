@@ -20,7 +20,23 @@
                     {{ message }}
                 </div>
             {% endfor %}
-
+            <div class="pull-right">
+                {%  if data.size != 1 %}
+                    {%  if data.page == 1 %}
+                        {{ '<<' }}
+                    {% else %}
+                        <a href="{{ path('movie-data', {'page':data.page-1})  }}" class="waves-effect"><i class="mdi mdi-home"></i><span><<</span></a>
+                    {% endif %}
+                    {% for i in 1..data.size %}
+                        <a href="{{ path('movie-data', {'page':i})  }}" class="waves-effect"><i class="mdi mdi-home"></i><span>{{ i }}</span></a>
+                    {% endfor %}
+                    {%  if data.page == data.size %}
+                        {{ '>>' }}
+                    {% else %}
+                        <a href="{{ path('movie-data', {'page':data.page+1})  }}" class="waves-effect"><i class="mdi mdi-home"></i><span>>></span></a>
+                    {% endif %}
+                {% endif %}
+            </div>
             <table class="table">
                 <thead>
                 <th>Title Original</th>
@@ -65,6 +81,24 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <div class="pull-right">
+                {%  if data.size != 1 %}
+                    {%  if data.page == 1 %}
+                        {{ '<<' }}
+                    {% else %}
+                        <a href="{{ path('movie-data', {'page':data.page-1})  }}" class="waves-effect"><i class="mdi mdi-home"></i><span><<</span></a>
+                    {% endif %}
+                    {% for i in 1..data.size %}
+                        <a href="{{ path('movie-data', {'page':i})  }}" class="waves-effect"><i class="mdi mdi-home"></i><span>{{ i }}</span></a>
+                    {% endfor %}
+                    {%  if data.page == data.size %}
+                        {{ '>>' }}
+                    {% else %}
+                        <a href="{{ path('movie-data', {'page':data.page+1})  }}" class="waves-effect"><i class="mdi mdi-home"></i><span>>></span></a>
+                    {% endif %}
+                {% endif %}
+            </div>
+
         </div>
     </div>
 
